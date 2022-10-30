@@ -1,11 +1,10 @@
 // Dependencies
 const express = require('express');
-const fs = require('fs');
 
-
+// app use express
 const app = express();
 
-// creating port
+// creating environment variable port
 const PORT = process.env.PORT || 3001;
 
 
@@ -16,14 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+// routes to route files
+require('./routes/apiRoutes')(app);
+require('./routes/htmlRoutes')(app);
 
 
-
-
-
-
-
-// app listener - starts our server
+// app listener - starts the server
 app.listen(PORT, () => {
-  console.log(`App listening on PORT ${PORT}`);
+  console.log(`Server available at localhost${PORT}`);
 });
